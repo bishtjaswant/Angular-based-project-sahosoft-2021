@@ -1,0 +1,97 @@
+<div class="container mt-3">
+
+  <div class="row">
+    <div class="col-md-2">
+      <ul class="list-group text-uppercase">
+        <li class="list-group-item" data-bs-toggle="tooltip" data-bs-placement="top" title="going to dashboard"
+          [routerLink]="['/dashboard']" routerLinkActive='active' aria-current="true">dashboard</li>
+        <li class="list-group-item active" data-bs-toggle="tooltip" data-bs-placement="top" title="show all posts"
+          [routerLink]="['/posts']" routerLinkActive='active'>posts</li>
+        <li class="list-group-item">courses</li>
+        <li class="list-group-item">Pages</li>
+        <li class="list-group-item">logout</li>
+      </ul>
+    </div>
+    <div class="col-md-10">
+      <div class="card">
+        <div class=" card-body">
+
+          <h1>Add new post</h1>
+
+          <ng-container *ngIf="postSaved">
+            <div class="alert alert-primary alert-dismissible fade show" role="alert">
+              <strong>Message!</strong> {{msg}}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          </ng-container>
+
+
+          <form enctype="multipart/form-data" [formGroup]="postForm" (ngSubmit) ="addPost()" method="post">
+            <div class=" form-group">
+              <div class="row">
+                <div class="col-md-2">
+                  <label for="title">Title</label>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class='form-control my-1' placeholder="title" formControlName='title' id="" required>
+                  <span style="font-weight: bolder;" class=" text-capitalize  text-danger" *ngIf="(postForm.controls.title.touched || postForm.controls.title.dirty) && postForm.controls.title.errors?.required"> please type post title </span>
+                </div>
+              </div>
+            </div>
+
+            <div class=" form-group">
+              <div class="row">
+                <div class="col-md-2">
+                  <label for="full_desc">full description</label>
+                </div>
+                <div class="col-md-6">
+                  <textarea class='form-control my-1' placeholder="post body" required formControlName='full_desc' id=""></textarea>
+                  <span style="font-weight: bolder;" class=" text-capitalize  text-danger" *ngIf="(postForm.controls.full_desc.touched || postForm.controls.full_desc.dirty) && postForm.controls.full_desc.errors?.required"> please write some content about your post </span>
+                </div>
+              </div>
+            </div>
+
+            <div class=" form-group">
+              <div class="row">
+                <div class="col-md-2">
+                  <label for="author">Author</label>
+                </div>
+                <div class="col-md-6">
+                  <input disabled value="{{u}}" type="text" class='form-control my-1' placeholder="author" formControlName='author' id="">
+                  <span style="font-weight: bolder;" class=" text-capitalize  text-danger" *ngIf="(postForm.controls.author.touched || postForm.controls.author.dirty) && postForm.controls.author.errors?.required"> author field can not be empty </span>
+                </div>
+              </div>
+            </div>
+
+
+            <div class=" form-group">
+              <div class="row">
+                <div class="col-md-2">
+                  <label for="image">Post image</label>
+                </div>
+                <div class="col-md-6">
+                  <input accept="image/*" (change) = "handleFileInput($event.target.files)" #file class="form-control my-1" type="file" id="formFile">
+                  <img [src]="postPreviewImage" alt="" class=" img-fluid" style="width: 100px;height: 100px;">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-4">
+                  <button  [disabled]="!postForm.valid" type="submit" class="btn text-capitalize btn-success mx-1">add post</button>
+                  <button type="button" (click)="cancelPost()" class="btn text-capitalize btn-danger mx-1">cancel post</button>
+                </div>
+              </div>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+</div>

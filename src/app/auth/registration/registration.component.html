@@ -1,0 +1,199 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 card shadow-lg p-4 mt-4 offset-md-2">
+       <h2 class="">Registration </h2>
+
+       <ng-container *ngIf="datasaved" >
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          <strong>congratulation!</strong> {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+       </ng-container>
+
+       <form [formGroup]="registrationForm" (ngSubmit) = "registrationSubmitForm()" class="needs-validation" novalidate="">
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <label for="firstName"  class="form-label">First name</label>
+            <input type="text" class="form-control" id="firstName" placeholder="" value="" formControlName='firstName' required="" autocomplete="off"
+           [ngClass]="{
+            'is-valid': registrationForm.controls.firstName?.valid,
+            'is-invalid': registrationForm.controls.firstName?.invalid
+          }"            >
+            <div class="invalid-feedback" *ngIf="(registrationForm.dirty || registrationForm.touched) &&  registrationForm.controls.firstName?.errors?.required">
+              Valid first name is required.
+            </div>
+          </div>
+
+
+
+
+          <div class="col-sm-6">
+            <label for="lastName" class="form-label">Last name</label>
+            <input type="text" class="form-control" id="lastName" formControlName='lastName' placeholder="" value="" required=""
+            [ngClass]="{
+              'is-valid': registrationForm.controls.lastName?.valid,
+              'is-invalid': registrationForm.controls.lastName?.invalid
+            }"
+            >
+            <div class="invalid-feedback" *ngIf="(registrationForm.dirty || registrationForm.touched) && registrationForm.controls.lastName?.errors?.required">
+              Valid last name is required.
+            </div>
+          </div>
+
+
+
+
+
+
+
+          <div class="col-6">
+            <label for="phone" class="form-label">Phone </label>
+            <input formControlName='phone' type="number" class="form-control" id="phone" placeholder=""
+            [ngClass]="{
+              'is-valid': registrationForm.controls.phone?.valid,
+              'is-invalid': registrationForm.controls.phone?.invalid
+            }"
+            >
+            <div class="invalid-feedback" *ngIf="(registrationForm.dirty || registrationForm.touched) &&        registrationForm.controls.phone?.errors?.required">
+              phone field is required
+            </div>
+            <div class="invalid-feedback" *ngIf="(registrationForm.dirty || registrationForm.touched) && registrationForm.controls.phone?.errors?.pattern">
+              phone field is not valid
+            </div>
+
+
+          </div>
+
+
+          <div class="col-6">
+            <label for="email" class="form-label">Email </label>
+            <input type="email" class="form-control" formControlName='email' id="email" placeholder="you@example.com"
+
+            [ngClass]="{
+              'is-valid': registrationForm.controls.email?.valid,
+              'is-invalid': registrationForm.controls.email?.invalid
+            }" >
+            <div class="invalid-feedback" *ngIf="(registrationForm.dirty || registrationForm.touched) &&   registrationForm.controls.email?.errors?.required">
+              email field is required
+            </div>
+            <div class="invalid-feedback" *ngIf="(registrationForm.dirty || registrationForm.touched) &&   registrationForm.controls.email?.errors?.email">
+              email field not valid
+            </div>
+
+          </div>
+
+
+          <div class="col-6">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" formControlName='password' placeholder="*****"
+
+            [ngClass]="{
+              'is-valid': registrationForm.controls.password?.valid,
+              'is-invalid': registrationForm.controls.password?.invalid
+            }" >
+
+            <div class="invalid-feedback" *ngIf="(registrationForm.dirty || registrationForm.touched) &&   registrationForm.controls.password?.errors?.required">
+              password field is required
+            </div>
+            <div class="invalid-feedback" *ngIf="(registrationForm.dirty || registrationForm.touched) &&   registrationForm.controls.password?.errors?.minlength">
+              password is too small, enter character more than four
+            </div>
+
+          </div>
+
+
+
+
+          <div class="col-6">
+            <label for="re-password" class="form-label">Re-Password</label>
+            <input type="password" class="form-control" id="re-password" formControlName='repassword' placeholder="*****"
+
+            [ngClass]="{
+              'is-valid': registrationForm.controls.repassword?.valid,
+              'is-invalid': registrationForm.controls.repassword?.invalid
+            }" >
+            <div class="invalid-feedback" *ngIf="(registrationForm.dirty || registrationForm.touched) &&   registrationForm.controls.repassword?.errors?.required">
+              repassword field is required
+            </div>
+
+            <div class="invalid-feedback" *ngIf="(registrationForm.dirty || registrationForm.touched) &&   registrationForm.controls.repassword?.errors?.notMatched">
+              password did not matched
+            </div>
+
+
+          </div>
+
+
+
+
+
+
+          <div class="col-md-5">
+            <label for="country" class="form-label">Country</label>
+            <select class="form-select" formControlName='country' id="country" required=""
+            [ngClass]="{
+              'is-valid': registrationForm.controls.country?.valid,
+              'is-invalid': registrationForm.controls.country?.invalid
+            }">
+              <option value="">Choose...</option>
+              <option value="india">india</option>
+              <option value="usa">United States</option>
+            </select>
+
+            <div class="invalid-feedback" *ngIf="(registrationForm.dirty || registrationForm.touched) &&   registrationForm.controls.country?.errors?.required">
+              select your country
+            </div>
+          </div>
+
+
+
+
+
+
+
+          <div class="col-md-4">
+            <label for="gender" class="form-label">Gender</label>
+            <select class="form-select" formControlName='gender' id="gender" required=""
+            [ngClass]="{
+              'is-valid': registrationForm.controls.gender?.valid,
+              'is-invalid': registrationForm.controls.gender?.invalid
+            }">
+              <option value="">Choose gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+
+            <div class="invalid-feedback" *ngIf="(registrationForm.dirty || registrationForm.touched) &&   registrationForm.controls.gender?.errors?.required">
+              select your gender
+            </div>
+
+          </div>
+
+        </div>
+
+        <hr class="my-4">
+
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" formControlName='terms' id="terms">
+          <label class="form-check-label"  for="terms">Accept term and condition to apply </label>
+          <div class="invalid-feedback" *ngIf="(registrationForm.dirty || registrationForm.touched) &&   registrationForm.controls.terms?.errors?.required">
+          PLEASE ACCEPT OUT TERMS AND CONDITION
+          </div>
+
+        </div>
+
+
+        <hr class="my-4">
+
+
+
+        <button class="btn btn-danger" [disabled]="!registrationForm.valid" type="submit">Registration now</button>
+
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<br class="mb-5">

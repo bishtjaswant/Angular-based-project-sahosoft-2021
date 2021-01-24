@@ -1,0 +1,24 @@
+ <div class="container mt-3">
+
+  <div class="row">
+     <div class="col-md-2">
+      <ul class="list-group text-uppercase">
+        <li class="list-group-item" data-bs-toggle="tooltip" data-bs-placement="top" title="going to dashboard" [routerLink]="['/dashboard']" routerLinkActive='active' aria-current="true">dashboard</li>
+        <li class="list-group-item" data-bs-toggle="tooltip" data-bs-placement="top" title="show all posts" [routerLink]="['/posts']" routerLinkActive='active'>posts</li>
+        <li class="list-group-item">courses</li>
+        <li class="list-group-item">Pages</li>
+       </ul>
+     </div>
+     <div class="col-md-10">
+       <div class="card">
+         <div class=" card-body">
+           <h1 *ngIf="currentlyLoggedUserName">Hello, {{currentlyLoggedUserName}} </h1>
+           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur perferendis iusto inventore at. Corrupti esse velit, voluptate earum autem quidem vero suscipit. Distinctio aliquam ullam quae nesciunt, debitis, error praesentium architecto quisquam omnis tenetur alias soluta beatae quam quis ducimus. Dolorum laudantium voluptatum cupiditate qui?</p>
+         </div>
+       </div>
+     </div>
+
+
+  </div>
+
+ </div>

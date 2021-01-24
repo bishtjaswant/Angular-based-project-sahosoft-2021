@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row my-5">
+    <div class="col-md-8 offset-2">
+
+      <div class="card shadow-lg p-3">
+         <h1> Login</h1>
+         <ng-container *ngIf="errorMessage">
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>oops!</strong> {{errorMessage}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+         </ng-container>
+
+        <form [formGroup]="loginForm" (ngSubmit) = "enterLoginCredential()">
+          <div class="form-group my-1">
+            <input type="text" formControlName="email" class="form-control" placeholder="Email"
+            [ngClass]="{
+              'is-valid': (loginForm.dirty || loginForm.touched) && loginForm.controls.email?.valid,
+              'is-invalid': (loginForm.dirty || loginForm.touched) && loginForm.controls.email?.invalid }" >
+
+              <div class="invalid-feedback" *ngIf="(loginForm.dirty || loginForm.touched) && loginForm.controls.email?.errors?.required">
+              Email field is required
+            </div>
+            <div class="invalid-feedback" *ngIf="(loginForm.dirty || loginForm.touched) && loginForm.controls.email?.errors?.email">
+              Entered invalid email address
+            </div>
+
+
+          </div>
+          <div class="form-group my-1">
+            <input type="password" formControlName="password" class="form-control"
+            placeholder="Password"
+            [ngClass]="{
+              'is-valid': (loginForm.dirty || loginForm.touched) && loginForm.controls.password?.valid,
+              'is-invalid': (loginForm.dirty || loginForm.touched) && loginForm.controls.password?.invalid }" >
+
+              <div class="invalid-feedback" *ngIf="(loginForm.dirty || loginForm.touched) && loginForm.controls.password?.errors?.required">
+              Password field is required
+            </div>
+
+          </div>
+          <div class="form-group my-1">
+            <!-- <a href="dashboard.html" class="btn btn-danger">Log In</a> -->
+            <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary">Log In</button>
+          </div>
+        </form>
+      </div>
+
+
+    </div>
+  </div>
+</div>

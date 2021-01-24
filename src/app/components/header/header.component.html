@@ -1,0 +1,51 @@
+ <nav class="navbar navbar-expand-md navbar-dark bg-blue">
+  <div class="container">
+    <a class="navbar-brand" [routerLink]="[ '/' ]">
+      Sahosoft project
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item  " routerLinkActive="active">
+          <a class="nav-link" [routerLink]="[ '/' ]">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="[ '/courses']">Courses</a>
+        </li>
+        <li class="nav-item" *ngIf="!isActiveUser" >
+          <a class="nav-link" routerLinkActive="active" [routerLink]="[ '/aboutus']" >About Us</a>
+        </li>
+        <li class="nav-item" *ngIf="isActiveUser" >
+          <a class="nav-link" routerLinkActive="active" [routerLink]="[ '/dashboard']" >Dashboard</a>
+        </li>
+        <li class="nav-item" *ngIf="!isActiveUser">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="[ '/contactus']" >Contact Us</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" *ngIf="!isActiveUser">
+          <a class="nav-link" [routerLink]="['/register']" routerLinkActive="active"  >Registration</a>
+        </li>
+
+      <li class="nav-item" *ngIf="!isActiveUser">
+          <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active"  >Login</a>
+        </li>
+        <li class="nav-item" *ngIf="isActiveUser">
+          <a class="nav-link" [routerLink]="['/logout']" routerLinkActive="active"  >Logout</a>
+        </li>
+        <li class="nav-item" *ngIf="isActiveUser">
+          <a class="nav-link"   >{{currentlyLoggedUserName |uppercase}}</a>
+        </li>
+
+    </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+
+
+

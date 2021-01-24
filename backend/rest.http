@@ -1,0 +1,54 @@
+
+POST http://localhost:3000/api/user HTTP/1.1
+Content-Type: application/json
+
+{
+"firstName":"rajni",
+"lastName":"bishht",
+"email":"rajnibisht@gmail.com",
+"phone":"4567876458",
+"password":"rajni",
+"gender":"female",
+"country":"IN"
+}
+
+
+###
+POST http://localhost:3000/api/user/login HTTP/1.1
+Content-Type: application/json
+
+{
+  "email":"rajnibisht@gmail.com",
+  "password":"rajni"
+}
+
+###
+GET http://localhost:3000/api/user HTTP/1.1
+Content-Type: application/json
+
+
+
+
+### all post request
+GET http://localhost:3000/api/post/all HTTP/1.1
+Content-Type: application/json
+
+
+### add post request
+POST  http://localhost:3000/api/post/addpost HTTP/1.1
+Content-Type: application/json
+
+{
+      "title": "sexy",
+      "sort_desc":"sort_desc",
+      "full_desc": "full_desc",
+      "image":"harry imgg",
+      "author":"harry bhai",
+      "isActive":true
+}
+
+
+###### delete ppost
+DELETE   http://localhost:3000/api/post/delete/600cdfedfe84102ad090505e HTTP/1.1
+Content-Type: application/json
+

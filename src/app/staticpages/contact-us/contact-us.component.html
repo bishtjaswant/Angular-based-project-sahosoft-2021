@@ -1,0 +1,100 @@
+<div class="container ">
+  <h1 class="mt-4">Contact us</h1>
+
+  <form [formGroup]="contactForm" (ngSubmit) = "submitContactData()" class="needs-validation " novalidate="">
+    <div class="row g-3">
+      <div class="col-sm-6 has-validation">
+        <label for="firstName" class="form-label">First name</label>
+        <input type="text" formControlName='firstName'
+        [ngClass]="{
+          'form-control': true,
+          'is-invalid':(contactForm.controls.firstName?.invalid &&  contactForm.controls.firstName?.touched ),
+          'is-valid':  contactForm.controls.firstName?.valid
+        }"
+        id="firstName" placeholder="" value="" required="" autocomplete="off">
+        <div class="invalid-feedback" *ngIf="(contactForm.touched ||contactForm.dirty) && contactForm.controls.firstName?.errors?.required">
+          Valid first name is required.
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <label for="lastName" class="form-label">Last name</label>
+        <input type="text" class="form-control" formControlName='lastName' id="lastName" placeholder="" value="" required=""
+        [ngClass]="{
+          'is-invalid':(contactForm.controls.lastName?.invalid &&  contactForm.controls.lastName?.touched ),
+          'is-valid':  contactForm.controls.lastName?.valid
+        }"
+   >
+        <div class="invalid-feedback" *ngIf="contactForm.controls.lastName?.errors?.required">
+          Valid last name is required.
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+      <div class="col-12">
+        <label for="email" class="form-label">Email </label>
+        <input type="email" class="form-control" id="email" formControlName='email' placeholder="you@example.com"
+        [ngClass]="{
+          'is-invalid':(contactForm.controls.email?.invalid &&  contactForm.controls.email?.touched ),
+          'is-valid':  contactForm.controls.email?.valid
+        }"     >
+        <div class="invalid-feedback"  *ngIf="contactForm.controls.email?.errors?.required">
+          Please enter email address
+        </div>
+        <div class="invalid-feedback"  *ngIf="contactForm.controls.email?.errors?.email">
+          Please enter valid email address
+        </div>
+      </div>
+
+      <div class="col-12">
+        <label for="phone" class="form-label">Phone</label>
+        <input type="number" class="form-control" formControlName='phone' id="phone" placeholder="" required=""
+        [ngClass]="{
+          'is-invalid':(contactForm.controls.phone?.invalid &&  contactForm.controls.phone?.touched ),
+          'is-valid':  contactForm.controls.phone?.valid
+        }" >
+        <div class="invalid-feedback" *ngIf="contactForm.controls.phone?.errors?.required" >
+          Please enter your phone number.
+        </div>
+        <div class="invalid-feedback"  *ngIf="contactForm.controls.phone?.errors?.pattern">
+          Please enter 10 digit mobile number
+        </div>
+      </div>
+
+
+
+
+
+
+      <div class="col-12">
+        <label for="msg" class="form-label">Message</label>
+        <textarea type="text" class="form-control" id="msg"  formControlName='msg' placeholder="write a message." required=""
+        [ngClass]="{
+          'is-invalid':(contactForm.controls.msg?.invalid &&  contactForm.controls.msg?.touched ),
+          'is-valid':  contactForm.controls.msg?.valid
+        }" ></textarea>
+        <div class="invalid-feedback" *ngIf="contactForm.controls.msg?.errors?.required">
+          please type your message
+        </div>
+      </div>
+
+
+    </div>
+
+
+
+    <button class=" btn btn-info my-3 border-0 " [disabled]="!contactForm.valid" type="submit">Send</button>
+
+  </form>
+
+</div>
